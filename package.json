@@ -1,0 +1,42 @@
+{
+  "name": "eslint-plugin-qbt-webui",
+  "version": "1.0.0",
+  "description": "ESLint plugin for qbt WebUI",
+  "author": {
+    "name": "Mike Tzou (Chocobo1)",
+    "url": "https://github.com/Chocobo1"
+  },
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chocobo1/eslint-plugin-qbt-webui.git"
+  },
+  "homepage": "https://github.com/Chocobo1/eslint-plugin-qbt-webui",
+  "bugs": "https://github.com/Chocobo1/eslint-plugin-qbt-webui/issues",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "peerDependencies": {
+    "@typescript-eslint/utils": ">=8.39.1",
+    "eslint": ">=9.0.0"
+  },
+  "scripts": {
+    "build": "tsup --clean --dts --format esm --sourcemap external lib/index.ts",
+    "build_rel": "tsup --clean --dts --format esm --minify terser --sourcemap external --treeshake recommended lib/index.ts",
+    "check": "tsc --noEmit",
+    "format": "js-beautify -r *.mjs lib/*.ts lib/**/*.ts tests/*.ts tests/**/*.ts",
+    "lint": "eslint --cache lib tests",
+    "test": "node --import ./tests/setup.ts --test tests/rules/*.ts"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.2.3",
+    "@types/node": "^24.2.1",
+    "@typescript-eslint/rule-tester": "^8.39.1",
+    "eslint": "^9.33.0",
+    "js-beautify": "^1.15.4",
+    "terser": "^5.43.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.1"
+  }
+}
