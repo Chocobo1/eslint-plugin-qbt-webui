@@ -25,7 +25,7 @@ jobs:
 
       - name: Install tools
         run: |
-          npm install
+          npm ci
           npm ls
           echo "::group::npm ls --all"
           npm ls --all
