@@ -9,7 +9,7 @@
   "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Chocobo1/eslint-plugin-qbt-webui.git"
+    "url": "git+https://github.com/Chocobo1/eslint-plugin-qbt-webui.git"
   },
   "homepage": "https://github.com/Chocobo1/eslint-plugin-qbt-webui",
   "bugs": "https://github.com/Chocobo1/eslint-plugin-qbt-webui/issues",
