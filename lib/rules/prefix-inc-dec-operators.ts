@@ -1,4 +1,4 @@
-import { AST_NODE_TYPES, ESLintUtils } from "@typescript-eslint/utils";
+import { AST_NODE_TYPES, ESLintUtils, TSESLint } from "@typescript-eslint/utils";
 
 export const prefixIncDecOperators = ESLintUtils.RuleCreator.withoutDocs({
   defaultOptions: [],
@@ -23,14 +23,16 @@ export const prefixIncDecOperators = ESLintUtils.RuleCreator.withoutDocs({
         // Detect `i++`
         if ((node.operator === "++") && !node.prefix) {
           if ((node.parent.type === AST_NODE_TYPES.ExpressionStatement) || (node.parent.type === AST_NODE_TYPES.ForStatement)) {
+            const codeFixer = (fixer: TSESLint.RuleFixer): TSESLint.RuleFix => {
+              return fixer.replaceText(node, `++${context.sourceCode.getText(node).replaceAll("+", "")}`);
+            };
             context.report({
               node: node,
               messageId: "issue:postfixIncrement",
+              fix: codeFixer,
               suggest: [{
                 messageId: "fix:postfixIncrement",
-                fix: (fixer) => {
-                  return fixer.replaceText(node, `++${context.sourceCode.getText(node).replaceAll("+", "")}`);
-                }
+                fix: codeFixer
               }]
             });
             return;
@@ -47,14 +49,16 @@ export const prefixIncDecOperators = ESLintUtils.RuleCreator.withoutDocs({
         // Detect `i--`
         if ((node.operator === "--") && !node.prefix) {
           if ((node.parent.type === AST_NODE_TYPES.ExpressionStatement) || (node.parent.type === AST_NODE_TYPES.ForStatement)) {
+            const codeFixer = (fixer: TSESLint.RuleFixer): TSESLint.RuleFix => {
+              return fixer.replaceText(node, `--${context.sourceCode.getText(node).replaceAll("-", "")}`);
+            };
             context.report({
               node: node,
               messageId: "issue:postfixDecrement",
+              fix: codeFixer,
               suggest: [{
                 messageId: "fix:postfixDecrement",
-                fix: (fixer) => {
-                  return fixer.replaceText(node, `--${context.sourceCode.getText(node).replaceAll("-", "")}`);
-                }
+                fix: codeFixer
               }]
             });
             return;

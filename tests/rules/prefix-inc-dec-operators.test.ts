@@ -25,6 +25,7 @@ ruleTester.run("prefix-inc-dec-operators", prefixIncDecOperators, {
   ],
   invalid: [{
       code: "i++;",
+      output: "++i;",
       errors: [{
         messageId: "issue:postfixIncrement",
         suggestions: [{
@@ -35,6 +36,7 @@ ruleTester.run("prefix-inc-dec-operators", prefixIncDecOperators, {
     },
     {
       code: "i--;",
+      output: "--i;",
       errors: [{
         messageId: "issue:postfixDecrement",
         suggestions: [{
@@ -45,6 +47,7 @@ ruleTester.run("prefix-inc-dec-operators", prefixIncDecOperators, {
     },
     {
       code: "obj.count++;",
+      output: "++obj.count;",
       errors: [{
         messageId: "issue:postfixIncrement",
         suggestions: [{
@@ -55,6 +58,7 @@ ruleTester.run("prefix-inc-dec-operators", prefixIncDecOperators, {
     },
     {
       code: "obj.count--;",
+      output: "--obj.count;",
       errors: [{
         messageId: "issue:postfixDecrement",
         suggestions: [{
@@ -77,6 +81,7 @@ ruleTester.run("prefix-inc-dec-operators", prefixIncDecOperators, {
     },
     {
       code: "for (let i = 0; i < 3; i++) {}",
+      output: "for (let i = 0; i < 3; ++i) {}",
       errors: [{
         messageId: "issue:postfixIncrement",
         suggestions: [{
@@ -87,6 +92,7 @@ ruleTester.run("prefix-inc-dec-operators", prefixIncDecOperators, {
     },
     {
       code: "for (let i = 3; i >= 0; i--) {}",
+      output: "for (let i = 3; i >= 0; --i) {}",
       errors: [{
         messageId: "issue:postfixDecrement",
         suggestions: [{
