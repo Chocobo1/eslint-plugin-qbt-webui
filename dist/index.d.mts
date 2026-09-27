@@ -6,6 +6,7 @@ declare const _default: {
   };
   rules: {
     "prefix-inc-dec-operators": import("@typescript-eslint/utils/ts-eslint").RuleModule<"fix:postfixIncrement" | "fix:postfixDecrement" | "issue:postfixIncrement" | "issue:postfixDecrement", [], unknown, import("@typescript-eslint/utils/ts-eslint").RuleListener>;
+    "require-event-parameter": import("@typescript-eslint/utils/ts-eslint").RuleModule<"fix:addEventParameter" | "issue:missingEventParameter", [], unknown, import("@typescript-eslint/utils/ts-eslint").RuleListener>;
   };
 };
 //#endregion
