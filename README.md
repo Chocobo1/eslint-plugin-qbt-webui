@@ -6,10 +6,11 @@ A collection of custom ESLint rules for qBittorrent WebUI.
 
 1. Add the plugin
 ```shell
-npm install --save-dev https://github.com/Chocobo1/eslint-plugin-qbt-webui/tarball/v1
+npm install --allow-remote=root --save-dev https://github.com/Chocobo1/eslint-plugin-qbt-webui/tarball/v1
 ```
 
 2. Load the rules
+
 ```js
 // eslint.config.mjs
 
