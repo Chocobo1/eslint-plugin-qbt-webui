@@ -21,7 +21,8 @@ export default [{
   },
   rules: {
     // find the list of rules in `lib/rules/index.ts`
-    "PluginQbtWebUI/prefix-inc-dec-operators": "error"
+    "PluginQbtWebUI/prefix-inc-dec-operators": "error",
+    "PluginQbtWebUI/require-event-parameter": "error"
   }
 }];
 ```
