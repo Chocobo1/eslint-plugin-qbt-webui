@@ -26,13 +26,26 @@ export const requireEventParameter = ESLintUtils.RuleCreator.withoutDocs({
 
         const listenerArg = node.arguments[1];
         switch (listenerArg.type) {
+          // `listener` is a function reference
           case AST_NODE_TYPES.Identifier:
-            // `listener` is a function reference
+          // `listener` is a function reference
+          case AST_NODE_TYPES.MemberExpression: {
+            const codeFixer = (fixer: TSESLint.RuleFixer): TSESLint.RuleFix => {
+              const text = context.sourceCode.getText(listenerArg);
+              return fixer.replaceText(listenerArg, `(event) => ${text}(event)`);
+            };
             context.report({
               node: listenerArg,
               messageId: "issue:missingEventParameter",
+              fix: codeFixer,
+              suggest: [{
+                messageId: "fix:addEventParameter",
+                fix: codeFixer
+              }]
             });
+
             break;
+          }
 
           case AST_NODE_TYPES.ArrowFunctionExpression:
           case AST_NODE_TYPES.FunctionExpression: {
