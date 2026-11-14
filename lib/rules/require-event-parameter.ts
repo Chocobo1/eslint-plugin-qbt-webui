@@ -1,7 +1,6 @@
 import { AST_NODE_TYPES, ESLintUtils, TSESLint } from "@typescript-eslint/utils";
 
 export const requireEventParameter = ESLintUtils.RuleCreator.withoutDocs({
-  defaultOptions: [],
   meta: {
     type: "suggestion",
     docs: {
