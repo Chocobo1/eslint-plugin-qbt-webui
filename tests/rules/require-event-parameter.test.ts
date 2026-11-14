@@ -21,24 +21,14 @@ ruleTester.run("require-event-parameter", requireEventParameter, {
   ],
   invalid: [{
       code: "element.addEventListener('click', func);",
-      output: "element.addEventListener('click', (event) => func(event));",
       errors: [{
-        messageId: "issue:missingEventParameter",
-        suggestions: [{
-          messageId: "fix:addEventParameter",
-          output: "element.addEventListener('click', (event) => func(event));"
-        }]
+        messageId: "issue:missingEventParameter"
       }]
     },
     {
       code: "element.addEventListener('click', other.func);",
-      output: "element.addEventListener('click', (event) => other.func(event));",
       errors: [{
-        messageId: "issue:missingEventParameter",
-        suggestions: [{
-          messageId: "fix:addEventParameter",
-          output: "element.addEventListener('click', (event) => other.func(event));"
-        }]
+        messageId: "issue:missingEventParameter"
       }]
     },
     {
